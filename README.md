@@ -138,8 +138,8 @@ python_terminal/
 
 ### Web Deployment
 
-- **Live Demo**: Download the executable from our [web interface](web/index.html)
-- **Cloud Sharing**: Easy deployment to cloud platforms (see CLOUD_SHARING.md)
+- **Live Demo**: [https://python-terminal-emulator.vercel.app/](https://python-terminal-emulator.vercel.app/)
+- **Interactive Terminal**: Full-featured web terminal with system monitoring
 
 ### Local Distribution
 

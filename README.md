@@ -192,6 +192,3 @@ _🏆 Built for SRM Hacks with CodeMate - Empowering developers with powerful te
 - `clear` - Clear terminal screen
 - `exit` - Exit terminal
 
-## License
-
-MIT License

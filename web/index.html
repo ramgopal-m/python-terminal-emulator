@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Terminal Emulator - Web Version</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier New", monospace;
+        background: #1a1a1a;
+        color: #00ff00;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #2a2a2a;
+        border-radius: 10px;
+        border: 2px solid #00ff00;
+      }
+
+      .header h1 {
+        color: #00ff00;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        color: #cccccc;
+        font-size: 1.2em;
+      }
+
+      .download-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .download-card {
+        background: #2a2a2a;
+        padding: 25px;
+        border-radius: 10px;
+        border: 2px solid #333;
+        transition: all 0.3s ease;
+      }
+
+      .download-card:hover {
+        border-color: #00ff00;
+        transform: translateY(-5px);
+      }
+
+      .download-card h3 {
+        color: #00ff00;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+      }
+
+      .download-card p {
+        color: #cccccc;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background: #00ff00;
+        color: #1a1a1a;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      .download-btn:hover {
+        background: #00cc00;
+        transform: scale(1.05);
+      }
+
+      .download-btn.secondary {
+        background: #333;
+        color: #00ff00;
+        border: 2px solid #00ff00;
+      }
+
+      .download-btn.secondary:hover {
+        background: #00ff00;
+        color: #1a1a1a;
+      }
+
+      .terminal-demo {
+        background: #000;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 30px 0;
+        border: 2px solid #333;
+        font-family: "Courier New", monospace;
+      }
+
+      .terminal-line {
+        margin: 5px 0;
+      }
+
+      .prompt {
+        color: #ffff00;
+      }
+
+      .command {
+        color: #00ff00;
+      }
+
+      .output {
+        color: #ffffff;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin: 30px 0;
+      }
+
+      .feature {
+        background: #2a2a2a;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #00ff00;
+      }
+
+      .feature h4 {
+        color: #00ff00;
+        margin-bottom: 8px;
+      }
+
+      .feature p {
+        color: #cccccc;
+        font-size: 0.9em;
+      }
+
+      .installation {
+        background: #2a2a2a;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 30px 0;
+      }
+
+      .installation h3 {
+        color: #00ff00;
+        margin-bottom: 15px;
+      }
+
+      .code-block {
+        background: #000;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+
+      .code-block code {
+        color: #00ff00;
+        font-family: "Courier New", monospace;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        border-top: 2px solid #333;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Python Terminal Emulator</h1>
+        <p>
+          A fully functioning command terminal that mimics real system behavior
+        </p>
+      </div>
+
+      <div class="download-section">
+        <div class="download-card">
+          <h3>🔧 Windows Executable</h3>
+          <p>
+            Ready-to-run executable for Windows. No Python installation
+            required. Just download and double-click!
+          </p>
+          <a href="#" class="download-btn" onclick="downloadFile('executable')"
+            >Download EXE (7.6MB)</a
+          >
+          <a
+            href="#"
+            class="download-btn secondary"
+            onclick="showInstructions('executable')"
+            >Instructions</a
+          >
+        </div>
+
+        <div class="download-card">
+          <h3>📦 Source Code</h3>
+          <p>
+            Complete Python source code for developers. Cross-platform
+            compatibility for Windows, Linux, and macOS.
+          </p>
+          <a href="#" class="download-btn" onclick="downloadFile('source')"
+            >Download ZIP (50KB)</a
+          >
+          <a
+            href="#"
+            class="download-btn secondary"
+            onclick="showInstructions('source')"
+            >Instructions</a
+          >
+        </div>
+
+        <div class="download-card">
+          <h3>⚡ Quick Install</h3>
+          <p>
+            One-click installer that automatically sets up everything for you.
+            Perfect for quick testing.
+          </p>
+          <a href="#" class="download-btn" onclick="downloadFile('installer')"
+            >Download Installer</a
+          >
+          <a
+            href="#"
+            class="download-btn secondary"
+            onclick="showInstructions('installer')"
+            >Instructions</a
+          >
+        </div>
+
+        <div class="download-card">
+          <h3>🐙 GitHub Repository</h3>
+          <p>
+            Access the full repository with latest updates, documentation, and
+            community contributions.
+          </p>
+          <a
+            href="https://github.com/yourusername/python-terminal-emulator"
+            class="download-btn"
+            target="_blank"
+            >View on GitHub</a
+          >
+          <a
+            href="#"
+            class="download-btn secondary"
+            onclick="showInstructions('github')"
+            >Clone Instructions</a
+          >
+        </div>
+      </div>
+
+      <div class="terminal-demo">
+        <div class="terminal-line">
+          <span class="prompt">user@computer:~$</span>
+          <span class="command">python main.py</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output">Welcome to Python Terminal Emulator</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output"
+            >Type 'help' for available commands or 'exit' to quit.</span
+          >
+        </div>
+        <div class="terminal-line">
+          <span class="prompt">user@computer:~$</span>
+          <span class="command">ls -l</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output"
+            >drwxr-xr-x 2 user user 4096 Sep 21 12:00 documents</span
+          >
+        </div>
+        <div class="terminal-line">
+          <span class="output"
+            >-rw-r--r-- 1 user user 1024 Sep 21 12:00 readme.txt</span
+          >
+        </div>
+        <div class="terminal-line">
+          <span class="prompt">user@computer:~$</span>
+          <span class="command">ps</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output">PID NAME STATUS</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output">1234 python.exe running</span>
+        </div>
+        <div class="terminal-line">
+          <span class="output">5678 chrome.exe running</span>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h4>📁 File Operations</h4>
+          <p>Complete file management: ls, cd, mkdir, rm, cp, mv, touch, cat</p>
+        </div>
+        <div class="feature">
+          <h4>🖥️ System Monitoring</h4>
+          <p>Real-time system info: ps, top, df, free, whoami</p>
+        </div>
+        <div class="feature">
+          <h4>🌐 Cross-Platform</h4>
+          <p>Works on Windows, Linux, and macOS with proper aliases</p>
+        </div>
+        <div class="feature">
+          <h4>📝 Command History</h4>
+          <p>Session-based command tracking and recall</p>
+        </div>
+        <div class="feature">
+          <h4>🔧 Built-in Commands</h4>
+          <p>Essential commands: help, history, clear, echo, set, env</p>
+        </div>
+        <div class="feature">
+          <h4>⚡ Fast & Lightweight</h4>
+          <p>Minimal resource usage with maximum functionality</p>
+        </div>
+      </div>
+
+      <div class="installation">
+        <h3>🚀 Quick Installation Options</h3>
+
+        <h4>Option 1: One-Line Install (Requires Python)</h4>
+        <div class="code-block">
+          <code
+            >pip install
+            git+https://github.com/yourusername/python-terminal-emulator.git</code
+          >
+        </div>
+
+        <h4>Option 2: Manual Setup</h4>
+        <div class="code-block">
+          <code
+            >git clone
+            https://github.com/yourusername/python-terminal-emulator.git<br />
+            cd python-terminal-emulator<br />
+            pip install -r requirements.txt<br />
+            python main.py</code
+          >
+        </div>
+
+        <h4>Option 3: Direct Download</h4>
+        <div class="code-block">
+          <code
+            >1. Download python-terminal.exe<br />
+            2. Save to any folder<br />
+            3. Double-click to run</code
+          >
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>Made with ❤️ in Python | Open Source | MIT License</p>
+        <p>Star ⭐ the project if you find it useful!</p>
+      </div>
+    </div>
+
+    <script>
+      function downloadFile(type) {
+        const downloads = {
+          executable:
+            "https://github.com/yourusername/python-terminal-emulator/releases/download/v1.0.0/python-terminal.exe",
+          source:
+            "https://github.com/yourusername/python-terminal-emulator/archive/main.zip",
+          installer:
+            "https://github.com/yourusername/python-terminal-emulator/releases/download/v1.0.0/quick-install.bat",
+        };
+
+        if (downloads[type]) {
+          // For demo purposes, show an alert
+          alert(
+            `Download would start: ${downloads[type]}\n\nNote: Replace with actual download URLs when deploying.`
+          );
+          // In actual deployment, use: window.open(downloads[type], '_blank');
+        }
+      }
+
+      function showInstructions(type) {
+        const instructions = {
+          executable:
+            "Windows Executable Instructions:\n\n1. Download python-terminal.exe\n2. Save to any folder on your computer\n3. Double-click the file to run\n4. No Python installation required!",
+          source:
+            "Source Code Instructions:\n\n1. Download the ZIP file\n2. Extract to a folder\n3. Open terminal/command prompt in that folder\n4. Run: pip install -r requirements.txt\n5. Run: python main.py",
+          installer:
+            'Quick Installer Instructions:\n\n1. Download quick-install.bat\n2. Right-click and "Run as administrator" (recommended)\n3. Follow the on-screen instructions\n4. The installer will download and set up everything automatically',
+          github:
+            "GitHub Clone Instructions:\n\n1. git clone https://github.com/yourusername/python-terminal-emulator.git\n2. cd python-terminal-emulator\n3. pip install -r requirements.txt\n4. python main.py",
+        };
+
+        alert(instructions[type]);
+      }
+    </script>
+  </body>
+</html>

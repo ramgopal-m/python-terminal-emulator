@@ -176,7 +176,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🎯 Development Team
 
-Developed by **Ramgopal M** for SRM Hacks with CodeMate 2024
+Developed by **Ramgopal M** for SRM Hacks with CodeMateai
 
 ---
 

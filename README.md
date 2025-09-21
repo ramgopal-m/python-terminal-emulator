@@ -1,4 +1,4 @@
-[🚀 Python Terminal Emulator](https://python-terminal-emulator.vercel.app/)
+### 🚀 Python Terminal Emulator [Demo Link](https://python-terminal-emulator.vercel.app/)
 
 
 A fully functioning command terminal emulator built in Python that mimics real system terminal behavior with cross-platform compatibility.

@@ -1,0 +1,33 @@
+{
+  "name": "python-terminal-emulator",
+  "version": "1.0.0",
+  "description": "Python Terminal Emulator for SRM Hacks with CodeMate - Web Edition",
+  "main": "index.html",
+  "scripts": {
+    "start": "vercel dev",
+    "build": "echo 'No build step required'",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramgopal-m/python-terminal-emulator.git"
+  },
+  "keywords": [
+    "python",
+    "terminal",
+    "emulator",
+    "vercel",
+    "hackathon",
+    "srm",
+    "codemate",
+    "web-terminal"
+  ],
+  "author": "Ramgopal M",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}

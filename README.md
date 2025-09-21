@@ -170,13 +170,10 @@ This project was developed for the **SRM Hacks with CodeMate** competition, show
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🎯 Development Team
 
-Developed by **Ramgopal M** for SRM Hacks with CodeMate 2024
+Developed by **Ramgopal M** for SRM Hacks with CodeMateai
 
 ---
 
@@ -195,6 +192,3 @@ _🏆 Built for SRM Hacks with CodeMate - Empowering developers with powerful te
 - `clear` - Clear terminal screen
 - `exit` - Exit terminal
 
-## License
-
-MIT License
